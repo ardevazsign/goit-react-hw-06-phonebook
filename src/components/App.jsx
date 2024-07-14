@@ -2,15 +2,18 @@ export const App = () => {
   return (
     <div
       style={{
+        backgroundColor: 'aqua',
         height: '100vh',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         fontSize: 40,
-        color: '#010101'
+        color: 'crimson'
       }}
     >
-      React homework template
+      Homework Number 6
+      GOIT
+      Owen Saavedra jr.
     </div>
   );
 };
