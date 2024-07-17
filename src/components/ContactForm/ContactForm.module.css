@@ -26,8 +26,8 @@
   margin-left: 70px;
   width: 300px;
   background: white;
-  border:1px solid aqua;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  border:2px solid #fff;
+  box-shadow: 2px 2px 4px aqua;
   padding: 10px;
   border-radius: 4px;
   font-size: 16px;
@@ -35,11 +35,11 @@
 }
 .formButton:hover {
   margin-left: 70px;
-  border: 1px solid aqua;
+  border: 2px solid #fff;
   width: 300px;
   color: black;
   background: aqua;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 2px 4px aqua;
   padding: 10px;
   border-radius: 4px;
 }
@@ -50,7 +50,7 @@
   font-size: 18px;
   font-weight: 600;
   border-radius: 5px;
-  border: none;
+  border:1px solid aqua;
   padding: 10px 20px;
   box-shadow: 2px 2px 4px aqua;
 }
@@ -63,7 +63,7 @@
   font-size: 18px;
   font-weight: 600;
   border-radius: 5px;
-  border: none;
+  border: 1px solid #ffff;    
   padding: 10px 20px;
   box-shadow: 2px 2px 4px gray;
 }

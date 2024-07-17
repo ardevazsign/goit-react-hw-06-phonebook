@@ -1,19 +1,24 @@
 .container{
-  padding: 15px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 15px 100px;
   background: gainsboro;
   border-radius: 5px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 .findName {
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 700;
 }
 .filterInput{
   outline: none;
   font-size: 16px;
   font-weight: 600;
-  border-radius: 3px;
-  border: none;
-  padding: 5px 10px;
+  border-radius: 5px;
+  border: 2px solid #fff;
+  padding: 10px 10px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 .filterInput:hover{
@@ -21,8 +26,8 @@
   font: 600;
   font-size: 16px;
   background: #f0ecec;
-  border-radius: 3px;
-  border: none;
-  padding: 5px 10px;
+  border-radius: 5px;
+  border: 2px solid #fff;
+  padding: 10px 10px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
