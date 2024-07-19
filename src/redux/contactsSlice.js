@@ -49,4 +49,4 @@ export const contactsReducer = persistReducer(
   contactsSlice.reducer
 );
 
-export const { addContact, deleteContact, deleteAllContact } = contactsSlice.actions;
+export const { addContact, deleteContact, deleteAllContacts } = contactsSlice.actions;

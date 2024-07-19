@@ -1,49 +1,34 @@
-import { Component } from 'react';
-import { nanoid } from 'nanoid';
+import { useState } from 'react';
+// import { nanoid } from 'nanoid';
 import css from './ContactForm.module.css';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact } from '../../redux/contactsSlice';
+import { getContacts } from '../../redux/selectors';
 
 
-export class ContactForm extends Component {
-  static propTypes = {
-    addContact: PropTypes.func.isRequired,
-    contacts: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-        number: PropTypes.string.isRequired,
-      })
-    ),
-  };
-  state = {
-    name: '',
-    number: '',
+export const ContactForm = () => {
+  const dispatch = useDispatch();
+  const contacts = useSelector(getContacts);
+
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
+
+  const handleNameChange = e => {
+    setName(e.target.value);
   };
 
-  handleNameChange = e => {
-    this.setState({
-      name: e.target.value,
-    });
+  const handleNumberChange = e => {
+    setNumber(e.target.value);
   };
 
-  handleNumberChange = e => {
-    this.setState({
-      number: e.target.value,
-    });
-  };
-
-  handleSubmit = e => {
-    // to prevent from refreshing
+  const handleSubmit = e => {
     e.preventDefault();
-    const { name, number } = this.state;
-    const { addContact, contacts } = this.props;
     
-    // if name and number is empty, it will not submit
     if (name.trim() === '' || number.trim() === '') {
       return;
     }
 
-    // if contact is existing set an alert, it will not submit(return)
     const existingContact = contacts.find(
       contact => contact.name.toLowerCase() === name.toLowerCase()
     );
@@ -52,26 +37,16 @@ export class ContactForm extends Component {
       return;
     }
 
-
-    // add contact
-    addContact({
-      id: nanoid(),
-      name: name.trim(),
-      number: number.trim(),
-    });
+    dispatch(addContact(name, number));
 
     // Reset form field
-    this.setState({
-      name: '',
-      number: '',
-    });
+    setName('');
+    setNumber('');
   };
-     
-render() {
-  const { name, number } = this.state;
+ 
 
   return (
-    <form className={css.form} onSubmit={this.handleSubmit}>
+    <form className={css.form} onSubmit={handleSubmit}>
       <label className={css.formField}>
         <p className={css.formLabel}>Name</p>
         <input
@@ -83,7 +58,7 @@ render() {
           required
           placeholder="name"
           value={name}
-          onChange={this.handleNameChange}
+          onChange={handleNameChange}
         />
       </label>
 
@@ -98,12 +73,22 @@ render() {
           required
           placeholder="Number"
           value={number}
-          onChange={this.handleNumberChange}
+          onChange={handleNumberChange}
         />
       </label>
 
-         <button className={css.formButton} type="submit"> Add Contact </button>
-    </form>  
+      <button className={css.formButton} type="submit"> Add Contact </button>
+    </form>
   );
- }
-}
+};
+
+// ContactForm.propTypes = {
+//     addContact: PropTypes.func.isRequired,
+//     contacts: PropTypes.arrayOf(
+//       PropTypes.shape({
+//         id: PropTypes.string.isRequired,
+//         name: PropTypes.string.isRequired,
+//         number: PropTypes.string.isRequired,
+//       })
+//     ),
+//   };
